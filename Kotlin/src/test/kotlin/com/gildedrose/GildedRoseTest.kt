@@ -1,6 +1,7 @@
 package com.gildedrose
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 internal class GildedRoseTest {
@@ -30,6 +31,14 @@ internal class GildedRoseTest {
         val app = GildedRose(items)
         app.updateQuality()
         assertEquals(0, app.items[0].quality)
+    }
+
+    @Test
+    fun agedBrie() {
+        val items = listOf(Item("Aged Brie", 3, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertTrue(app.items[0].quality > 10)
     }
 
 }
