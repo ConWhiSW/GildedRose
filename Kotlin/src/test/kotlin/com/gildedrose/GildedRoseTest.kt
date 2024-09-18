@@ -61,9 +61,9 @@ internal class GildedRoseTest {
     @Test
     fun backstagePasses() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 0, 10),
-            Item("Backstage passes to a TAFKAL80ETC concert", 5, 10),
-            Item("Backstage passes to a TAFKAL80ETC concert", 10, 10),
-            Item("Backstage passes to a TAFKAL80ETC concert", 30, 10))
+            Item("Backstage passes to Back to the Future: The Musical", 5, 10),
+            Item("Backstage passes to the Lion King", 10, 10),
+            Item("Backstage passes to a Lancashire Hotpots concert", 30, 10))
         val app = GildedRose(items)
         app.updateQuality()
         assertEquals(0, app.items[0].quality)
