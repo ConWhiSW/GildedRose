@@ -48,6 +48,15 @@ internal class GildedRoseTest {
         app.updateQuality()
         assertEquals(50, app.items[0].quality)
     }
+
+    @Test
+    fun sulfuras() {
+        val items = listOf(Item("Sulfuras, Hand of Ragnaros", 10, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(10, app.items[0].quality)
+        assertEquals(10, app.items[0].sellIn)
+    }
 }
 
 
