@@ -41,6 +41,13 @@ internal class GildedRoseTest {
         assertTrue(app.items[0].quality > 10)
     }
 
+    @Test
+    fun highQuality() {
+        val items = listOf(Item("Aged Brie", 3, 50))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(50, app.items[0].quality)
+    }
 }
 
 
