@@ -71,6 +71,14 @@ internal class GildedRoseTest {
         assertEquals(12, app.items[2].quality)
         assertEquals(11, app.items[3].quality)
     }
+
+    @Test
+    fun conjured() {
+        val items = listOf(Item("Conjured cat", 10, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(8, app.items[0].quality)
+    }
 }
 
 
