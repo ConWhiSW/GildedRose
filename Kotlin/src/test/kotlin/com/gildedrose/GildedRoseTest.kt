@@ -51,11 +51,25 @@ internal class GildedRoseTest {
 
     @Test
     fun sulfuras() {
-        val items = listOf(Item("Sulfuras, Hand of Ragnaros", 10, 10))
+        val items = listOf(Item("Sulfuras, Hand of Ragnaros", 10, 80))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals(10, app.items[0].quality)
+        assertEquals(80, app.items[0].quality)
         assertEquals(10, app.items[0].sellIn)
+    }
+
+    @Test
+    fun backstagePasses() {
+        val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 0, 10),
+            Item("Backstage passes to a TAFKAL80ETC concert", 5, 10),
+            Item("Backstage passes to a TAFKAL80ETC concert", 10, 10),
+            Item("Backstage passes to a TAFKAL80ETC concert", 30, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(0, app.items[0].quality)
+        assertEquals(13, app.items[1].quality)
+        assertEquals(12, app.items[2].quality)
+        assertEquals(11, app.items[3].quality)
     }
 }
 
