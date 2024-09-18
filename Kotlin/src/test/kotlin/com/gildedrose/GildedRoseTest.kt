@@ -14,6 +14,16 @@ internal class GildedRoseTest {
 
     }
 
+    @Test
+    fun pastSellBy() {
+        val items = listOf(Item("foo", 1, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(9, app.items[0].quality)
+        app.updateQuality()
+        assertEquals(7, app.items[0].quality)
+    }
+
 }
 
 
