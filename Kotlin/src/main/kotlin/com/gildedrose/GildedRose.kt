@@ -8,6 +8,9 @@ class GildedRose(var items: List<Item>) {
                 if (items[i].quality > 0) {
                     if (items[i].name != "Sulfuras, Hand of Ragnaros") {
                         items[i].quality = items[i].quality - 1
+                        if (items[i].name.startsWith("Conjured")) {
+                            items[i].quality = items[i].quality - 1
+                        }
                     }
                 }
             } else {
