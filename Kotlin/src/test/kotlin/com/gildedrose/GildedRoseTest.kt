@@ -24,6 +24,14 @@ internal class GildedRoseTest {
         assertEquals(7, app.items[0].quality)
     }
 
+    @Test
+    fun negativeQuality() {
+        val items = listOf(Item("foo", 0, 0))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(0, app.items[0].quality)
+    }
+
 }
 
 
