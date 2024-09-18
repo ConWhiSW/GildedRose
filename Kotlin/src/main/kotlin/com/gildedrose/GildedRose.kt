@@ -29,52 +29,36 @@ class GildedRose(var items: List<Item>) {
                 item.sellIn -= 1
             }
 
-            if (item.name != "Aged Brie" && !item.name.startsWith("Backstage passes")) {
-                if (item.quality > 0) {
-                    if (item.name != "Sulfuras, Hand of Ragnaros") {
-                        item.quality -= 1
-                        if (item.name.startsWith("Conjured")) {
-                            item.quality -= 1
-                        }
-                    }
-                }
+            var qualityChange = 0;
+
+            if (item.name == "Aged Brie") {
+                qualityChange = updateBrie();
+            } else if (item.name.lowercase().contains("backstage passes")) {
+                qualityChange = updateBackstagePass(item);
+            } else if (item.name.lowercase().contains("sulfuras")) {
+                qualityChange = updateSulfuras();
             } else {
-                if (item.quality < 50) {
-                    item.quality += 1
-
-                    if (item.name.startsWith("Backstage passes")) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality += 1
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality += 1
-                            }
-                        }
-                    }
-                }
+                qualityChange = -1;
             }
 
             if (item.sellIn < 0) {
-                if (item.name != "Aged Brie") {
-                    if (!item.name.startsWith("Backstage passes")) {
-                        if (item.quality > 0) {
-                            if (item.name != "Sulfuras, Hand of Ragnaros") {
-                                item.quality -= 1
-                            }
-                        }
-                    } else {
-                        item.quality -= item.quality
-                    }
-                } else {
-                    if (item.quality < 50) {
-                        item.quality += 1
-                    }
-                }
+                qualityChange *= 2
             }
+
+            if (item.name.lowercase().contains("conjured")) {
+                qualityChange *= 2
+            }
+
+            item.quality += qualityChange
+
+            if (item.quality > 50 && !item.name.lowercase().contains("sulfuras")) {
+                item.quality = 50
+            }
+            if (item.quality < 0) {
+                item.quality = 0
+            }
+
+
         }
     }
 
